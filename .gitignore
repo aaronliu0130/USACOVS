@@ -30,3 +30,18 @@
 *.exe
 *.out
 *.app
+
+# VS Shenanigans
+/.vs/*
+/x64/*
+*.recipe
+
+*.ilk
+
+*.log
+
+*.tlog
+
+*.idb
+
+*.pdb
