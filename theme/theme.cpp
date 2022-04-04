@@ -7,17 +7,21 @@ LANG: C++11
 #include <algorithm>
 #include <fstream>
 #include <cassert>
+#include <vector>
+#include <array>
 using namespace std;
-constexpr auto N = 5100;
-int n, f[N][N] = { 0 }, a[N] = { 0 }, ans(0);
+constexpr auto N = 5002;
+array<array<int, N>, N> f = { 0 };
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    ofstream cout("theme.out");
-    ifstream cin("theme.in");
+    //ofstream cout("theme.out");
+    //ifstream cin("theme.in");
+    vector<int> a; int n, temp, ans(0);
     cin >> n;
+    a.push_back(0);
     for (int i(1); i <= n; i++)
-        cin >> a[i];
+        cin >> temp, a.push_back(temp);
     for (int i(n); i > 0; i--) {
         assert(i < N&& i - 1 < N);
         a[i] -= a[i - 1];
@@ -27,5 +31,6 @@ int main() {
             if (a[i] == a[j])
                 ans = max(ans, f[i][j] = min(j - i - 1, f[i - 1][j - 1] + 1));
     cout << ((ans > 3) ? (ans + 1) : 0) << '\n';
+    while (1);
     return 0;
 }
